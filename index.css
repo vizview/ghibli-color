@@ -1,0 +1,61 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+p {
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size);
+}
+
+section {
+  padding-bottom: 10px;
+  background-image: url(./img/bg_img.png);
+}
+
+section:first-of-type {
+  height: 100vh ; 
+}
+
+
+h1 {
+  font-family: var(--heading-font-family);
+  font-size: var(--title-font-size);
+}
+
+h1 div {
+  font-style: var(--title-sm-font-style);
+  font-size: var(--title-sm-font-size);
+}
+
+.string-btn {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  top: 0;
+  transition: top ease 0.5s;
+}
+
+.string-btn:hover {
+  background-color: transparent;
+  top: 30px;
+}
+
+.text-handwritten {
+  color: red;
+  font-family: var(--hand-written-font);
+  font-size: var(--hand-written-font-size);
+}
+
+@media (min-width: 1440px)  {
+  h1 {
+    font-family: var(--heading-font-family);
+    font-size: var(--title-font-size);
+  }
+
+  h1 > div {
+    font-style: var(--title-sm-font-style);
+    font-size: var(--title-sm-font-size);
+  }
+}

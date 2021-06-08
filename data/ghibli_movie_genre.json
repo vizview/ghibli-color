@@ -1,0 +1,49 @@
+{
+  "Family": [
+    "Kiki's Delivery Service",
+    "The Cat Returns",
+    "Castle in the Sky",
+    "My Neighbor Totoro",
+    "Whisper of the Heart",
+    "My Neighbors the Yamadas",
+    "Spirited Away",
+    "Ponyo on the Cliff by the Sea",
+    "Arrietty"
+  ],
+  "Adventure": [
+    "Kiki's Delivery Service",
+    "The Cat Returns",
+    "Nausicaä of the Valley of the Wind",
+    "Castle in the Sky",
+    "Porco Rosso",
+    "Pom Poko",
+    "Princess Mononoke",
+    "Howl's Moving Castle",
+    "Tales from Earthsea"
+  ],
+  "Drama": [
+    "Kiki's Delivery Service",
+    "The Cat Returns",
+    "Grave of the Fireflies",
+    "Only Yesterday",
+    "Whisper of the Heart",
+    "From Up on Poppy Hill",
+    "The Wind Rises",
+    "The Tale of The Princess Kaguya",
+    "When Marnie Was There"
+  ],
+  "Fantasy": [
+    "Kiki's Delivery Service",
+    "The Cat Returns",
+    "Nausicaä of the Valley of the Wind",
+    "Castle in the Sky",
+    "My Neighbor Totoro",
+    "Pom Poko",
+    "Princess Mononoke",
+    "Spirited Away",
+    "Howl's Moving Castle",
+    "Tales from Earthsea",
+    "Arrietty",
+    "The Tale of The Princess Kaguya"
+  ]
+}

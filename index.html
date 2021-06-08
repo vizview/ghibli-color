@@ -20,34 +20,50 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js" integrity="sha512-gQVBYBvfC+uyor5Teonjr9nmY1bN+DlOCezkhzg4ShpC5q81ogvFsr5IV4xXAj6HEtG7M1Pb2JCha97tVFItYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./index.js"></script>
+
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        margin-left: 15vw;
+        margin-right: 15vw;
+        overflow-x: hidden;
+      }
+
+      canvas {
+        display: block;
+        margin: auto;
+        position:relative;
+        top: 0px;
+      }
+  </style>
   </head>
   
   <body>
-    <section>
-      <div class='container ghibli-poster-container'>
-
-      </div>
+    <div class='d-flex flex-row' >
+      <main>
+      </main>
       <div class='string-container'>
-        <button class='string-btn mb-0'>
+        <button class='string-btn mb-0' onclick="pressStringButton()">
           <img src='./img/line.png' alt='a line that can be clicked'/>
         </button>
-        <img src='./img/ghibli-arrow.svg' alt='arrow'/>
-        <div class='text-handwritten'>Click</div>
+        <div>
+          <img src='./img/ghibli-arrow.svg' alt='arrow'/>
+          <div class='text-handwritten'>Click</div>
+        </div>
       </div>
-      <div class='d-flex flex-column align-items-center'>
-        <h1 class='text-center'>
-          <div>The</div> Colors in Ghibli Posters
-        </h1>
-        <p class='col-lg-4 col-md-6'>
-          If you fall in love with one Studio Ghibli film, 
-          then you must try out the other ones. As big fans of the films, 
-          we have noticed that there might be some commonalities among them.
-          Therefore, we decided to look at all 21 official movie posters of
-          Studio Ghibli to investigate whether there is a pattern in the colors used. 
-        </p>
-      </div>
-    </section>
-    <section></section>
-    <section></section>
+    </div>
+    <div class='d-flex flex-column align-items-center'>
+      <h1 class='text-center'>
+        <div>The</div> Colors in Ghibli Posters
+      </h1>
+      <p class='col-lg-4 col-md-6'>
+        If you fall in love with one Studio Ghibli film, 
+        then you must try out the other ones. As big fans of the films, 
+        we have noticed that there might be some commonalities among them.
+        Therefore, we decided to look at all 21 official movie posters of
+        Studio Ghibli to investigate whether there is a pattern in the colors used. 
+      </p>
+    </div>
   </body>
 </html>

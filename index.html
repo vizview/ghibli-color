@@ -1,69 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Colors in Ghibli Project</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Asap&family=Cardo:ital,wght@0,400;0,700;1,400&family=Reenie+Beanie&display=swap" rel="stylesheet" type='text/css'>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Colors in Ghibli Project</title>
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="variables.css">
-    <link rel="stylesheet" href="index.css">
-    <!-- Bootstrap only -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Asap&family=Cardo:ital,wght@0,400;0,700;1,400&family=Reenie+Beanie&display=swap"
+    rel="stylesheet" type='text/css'>
 
-    <!-- JS packages only -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js" integrity="sha512-gQVBYBvfC+uyor5Teonjr9nmY1bN+DlOCezkhzg4ShpC5q81ogvFsr5IV4xXAj6HEtG7M1Pb2JCha97tVFItYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./index.js"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="variables.css">
+  <link rel="stylesheet" href="index.css">
+  <!-- Bootstrap only -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    integrity="undefined" crossorigin="anonymous">
 
-    <style>
-      body {
-        margin: 0px;
-        padding: 0px;
-        margin-left: 15vw;
-        margin-right: 15vw;
-        overflow-x: hidden;
-      }
+  <!-- JS packages only -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"
+    integrity="sha512-gQVBYBvfC+uyor5Teonjr9nmY1bN+DlOCezkhzg4ShpC5q81ogvFsr5IV4xXAj6HEtG7M1Pb2JCha97tVFItYQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./index.js"></script>
 
-      canvas {
-        display: block;
-        margin: auto;
-        position:relative;
-        top: 0px;
-      }
+  <style>
+    body {
+      margin: 0px;
+      padding: 0px;
+      margin-left: 15vw;
+      margin-right: 15vw;
+      overflow-x: hidden;
+    }
+
+    /* canvas {
+      display: block;
+      margin: auto;
+      position: relative;
+      top: 0px;
+    } */
   </style>
-  </head>
-  
-  <body>
-    <div class='d-flex flex-row' >
-      <main>
-      </main>
-      <div class='string-container'>
-        <button class='string-btn mb-0' onclick="pressStringButton()">
-          <img src='./img/line.png' alt='a line that can be clicked'/>
-        </button>
-        <div>
-          <img src='./img/ghibli-arrow.svg' alt='arrow'/>
-          <div class='text-handwritten'>Click</div>
+</head>
+
+<body>
+  <main>
+    <section style="height: 100vh">
+      <div class='d-flex flex-row'>
+        <div class='string-container'>
+          <button class='string-btn mb-0' onclick="pressStringButton()">
+            <img src='./img/line.png' alt='a line that can be clicked' />
+          </button>
+          <div>
+            <img src='./img/ghibli-arrow.svg' alt='arrow' />
+            <div class='text-handwritten'>Click</div>
+          </div>
         </div>
       </div>
+      <div class='d-flex flex-column align-items-center'>
+        <h1 class='text-center'>
+          <div>The</div> Colors in Ghibli Posters
+        </h1>
+        <p class='col-lg-4 col-md-6'>
+          If you fall in love with one Studio Ghibli film,
+          then you must try out the other ones. As big fans of the films,
+          we have noticed that there might be some commonalities among them.
+          Therefore, we decided to look at all 21 official movie posters of
+          Studio Ghibli to investigate whether there is a pattern in the colors used.
+        </p>
+      </div>
+    </section>
+    <div style="height: 100px"></div>
+    <div>
+      <object data="img/totoro.svg" type="image/svg+xml" style="margin: auto; display: block;"></object>
+      <div class="intro">
+        <h4 class="intro-title">Step 1</h4>
+        <p class="intro-detail">
+          First, we collected all the colors from the posters using Google Vision API and organized them by hue.
+        </p>
+      </div>
+
     </div>
-    <div class='d-flex flex-column align-items-center'>
-      <h1 class='text-center'>
-        <div>The</div> Colors in Ghibli Posters
-      </h1>
-      <p class='col-lg-4 col-md-6'>
-        If you fall in love with one Studio Ghibli film, 
-        then you must try out the other ones. As big fans of the films, 
-        we have noticed that there might be some commonalities among them.
-        Therefore, we decided to look at all 21 official movie posters of
-        Studio Ghibli to investigate whether there is a pattern in the colors used. 
-      </p>
+    <div style="height: 500px"></div>
+    <div>
+      <object data="img/totoro.svg" type="image/svg+xml" style="margin: auto; display: block;"></object>
+      <div class="intro">
+
+        <h4 class="intro-title">Step 2</h4>
+        <p class="intro-detail">
+          Next, we removed lightness and satruation from the colors with only hue left.
+        </p>
+      </div>
     </div>
-  </body>
+    <div style="height: 1000px"></div>
+  </main>
+</body>
+
 </html>

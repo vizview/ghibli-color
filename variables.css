@@ -1,25 +1,24 @@
 :root {
-  /* Colors */
-  --primary-color: #F24747;
-  --title-color: #000000;
-  --text-color: #474747;
+	/* Colors */
+	--primary-color: #f24747;
+	--title-color: #000000;
+	--text-color: #474747;
+	--subtitle-color: #cb752a;
 
+	/* Text */
+	--heading-font-family: "Cardo", serif;
 
-  /* Text */
-  --heading-font-family: 'Cardo', serif;
+	--title-font-size: 64px;
+	--title-sm-font-style: italic;
+	--title-sm-font-size: 44px;
 
-  --title-font-size: 64px;
-  --title-sm-font-style: italic;
-  --title-sm-font-size: 44px;
+	--h1-font-size: 28px;
 
-  --h1-font-size: 28px;
+	--body-font-family: "Asap", sans-serif;
+	--body-lg-font-size: 20px;
+	--body-font-size: 14px;
 
-  --body-font-family: 'Asap', sans-serif;
-  --body-lg-font-size: 20px;
-  --body-font-size: 14px;
-
-  --hand-written-font: 'Reenie Beanie', cursive;
-  --hand-written-lg-font-size: 72px;
-  --hand-written-font-size: 48px;
+	--hand-written-font: "Reenie Beanie", cursive;
+	--hand-written-lg-font-size: 72px;
+	--hand-written-font-size: 48px;
 }
-

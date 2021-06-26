@@ -1,62 +1,89 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
+canvas {
+	position: fixed;
+	z-index: -1;
+	left: 0;
+	top: 0;
+}
 p {
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size);
+	font-family: var(--body-font-family);
+	font-size: var(--body-font-size);
 }
 
 body {
-  padding-bottom: 10px;
-  background-image: url(./img/bg_img.png);
+	padding-bottom: 10px;
+	background-image: url(./img/bg_img.png);
 }
 
 section:first-of-type {
-  height: 100vh ; 
+	height: 100vh;
 }
 
-
 h1 {
-  font-family: var(--heading-font-family);
-  font-size: var(--title-font-size);
+	font-family: var(--heading-font-family);
+	font-size: var(--title-font-size);
 }
 
 h1 div {
-  font-style: var(--title-sm-font-style);
-  font-size: var(--title-sm-font-size);
+	font-style: var(--title-sm-font-style);
+	font-size: var(--title-sm-font-size);
 }
 
 .string-btn {
-  position: relative;
-  background-color: transparent;
-  border: none;
-  margin-top: -30px;
-  top: 0px;
-  transition: top ease 0.5s;
+	position: relative;
+	background-color: transparent;
+	border: none;
+	margin-top: -30px;
+	top: 0px;
+	transition: top ease 0.5s;
 }
 
 .string-btn:hover {
-  background-color: transparent;
-  top: 30px;
+	background-color: transparent;
+	top: 30px;
 }
 
 .text-handwritten {
-  color: red;
-  font-family: var(--hand-written-font);
-  font-size: var(--hand-written-font-size);
+	color: red;
+	font-family: var(--hand-written-font);
+	font-size: var(--hand-written-font-size);
 }
 
-@media (min-width: 1440px)  {
-  h1 {
-    font-family: var(--heading-font-family);
-    font-size: var(--title-font-size);
-  }
+.intro {
+	text-align: center;
+	max-width: 590px;
+	background-color: #fff;
+	padding: 32px 24px;
+	margin-bottom: 16px;
+	margin: 0 auto;
+}
 
-  h1 > div {
-    font-style: var(--title-sm-font-style);
-    font-size: var(--title-sm-font-size);
-  }
+.intro-title {
+	font-family: var(--heading-font-family);
+	font-size: 28px;
+	font-weight: bold;
+	color: var(--subtitle-color);
+}
+
+.intro-detail {
+	font-family: var(--body-font-family);
+	font-size: 20px;
+	font-weight: 100;
+	color: var(--text-color);
+}
+@media (min-width: 1440px) {
+	h1 {
+		font-family: var(--heading-font-family);
+		font-size: var(--title-font-size);
+	}
+
+	h1 > div {
+		font-style: var(--title-sm-font-style);
+		font-size: var(--title-sm-font-size);
+	}
 }

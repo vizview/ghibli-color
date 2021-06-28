@@ -61,6 +61,7 @@ h1 div {
 	padding: 32px 24px;
 	margin-bottom: 16px;
 	margin: 0 auto;
+	border-radius: 6px;
 }
 
 .intro-title {

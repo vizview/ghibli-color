@@ -10,6 +10,12 @@ canvas {
 	left: 0;
 	top: 0;
 }
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 15px); }
+  100%   { transform: translate(0, -0px); }    
+}
+
 p {
 	font-family: var(--body-font-family);
 	font-size: var(--body-font-size);
@@ -46,6 +52,10 @@ h1 div {
 .string-btn:hover {
 	background-color: transparent;
 	top: 30px;
+}
+
+.ghibli-posters {
+  animation: 7000ms ease-in-out 0s infinite alternate none running floating;
 }
 
 .text-handwritten {

@@ -21,8 +21,13 @@ let posterImage = {
 let allColorsData;
 
 let animationPositions = {
-  byHue: 400,
+  byHue: 700,
 }
+
+let animations = {
+  fadeLength: 200
+}
+
 let posterPositions = [{
     x: posterImage.startingPosition,
     y: 32.5,
@@ -95,16 +100,18 @@ function setup() {
 // const sortByHue = ghibliData.sort((a, b) => (a[0] - b[0]));
 function draw() {
   let pos = window.scrollY;
-
+  // clear()
 
   if (pos > animationPositions.byHue) {
     noStroke()
     colorMode(HSB)
     for (let i = 0; i < sortByHue.length; i++) {
-      let c = color(`hsl(${sortByHue[i][0].toFixed(0)}, ${sortByHue[i][1] * 100}%, ${sortByHue[i][2] * 100}%)`)
-      // let c = color(`hsl(240, ${sortByHue[i][0] * 100}%, 50%)`);
-      fill(c)
-      rect((window.innerWidth - sortByHue.length * 4) / 2 + i * 4, 500, 4, 85)
+      setTimeout(() => {
+        let c = color(`hsl(${sortByHue[i][0].toFixed(0)}, ${sortByHue[i][1] * 100}%, ${sortByHue[i][2] * 100}%)`)
+        fill(c)
+        rect((window.innerWidth - sortByHue.length * 4) / 2 + i * 4, 450, 4, 85)
+      }, 1000)
+
 
     }
   }

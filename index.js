@@ -1,24 +1,14 @@
 'use strict'
-const GHIBLI_MOVIES_INFO = './data/ghibli_movies_info.json';
 const GHIBLI_MOVIES_ALL_COLORS = './data/ghibli_colors.json';
-var moviePosters = [];
-let frame;
-let currentIndex = 0
-
-let canvas = {
-  width: window.innerWidth,
-  height: 5000,
-  moviePosters: null
-}
-
-let posterImage = {
-  width: 130,
-  height: 200,
-  startingPosition: 40,
-  gutter: 60,
-}
 
 let allColorsData;
+let simulation, nodes;
+let salarySizeScale, salaryXScale, categoryColorScale
+let categoryLegend, salaryLegend
+
+const margin = {left: 170, top: 50, bottom: 50, right: 20}
+const width = 1000 - margin.left - margin.right
+const height = 950 - margin.top - margin.bottom
 
 let animationPositions = {
   byHue: 700,
@@ -28,119 +18,128 @@ let animations = {
   fadeLength: 200
 }
 
-let posterPositions = [{
-    x: posterImage.startingPosition,
-    y: 32.5,
-  },
-  {
-    x: posterImage.startingPosition + posterImage.width + posterImage.gutter,
-    y: 96.5,
-  },
-  {
-    x: (posterImage.startingPosition + posterImage.width * 2) + posterImage.gutter * 2,
-    y: 56,
-  },
-  {
-    x: (posterImage.startingPosition + posterImage.width * 3) + posterImage.gutter * 3,
-    y: 27,
-  },
-  {
-    x: (posterImage.startingPosition + posterImage.width * 4) + posterImage.gutter * 4,
-    y: 68,
-  },
-];
-
-
-
-function preload() {
-  loadJSON(GHIBLI_MOVIES_INFO, (data) => {
-    let count = 0;
-    for (const i in data) {
-      if (count % 5 === 0) {
-        moviePosters.push([]);
-      }
-      moviePosters[Math.floor(count / 5)].push(
-        loadImage(data[i].poster_path)
-      );
-      count++;
-    }
-    // console.log(moviePosters)
-  });
-  allColorsData = loadJSON(GHIBLI_MOVIES_ALL_COLORS)
-  frame = loadImage('./img/frame.png');
-}
+// loading and organize data
+// function preload() {
+//   allColorsData = loadJSON(GHIBLI_MOVIES_ALL_COLORS);
+// }
 
 let sortByHue;
+// function loadData() {
+//   console.log(allColorsData)
+//   const allColors = [];
+//   for (const i in allColorsData) {
+//     const movie = allColorsData[i];
+//     allColors.push(...movie.colors);
+//   }
+//   sortByHue = allColors.sort((a, b) => (a[0] - b[0]));
+// }
 
-function loadData() {
+// function setup() {
+//   // createCanvas(canvas.width, canvas.height);
+//   loadData();
+//   drawInitial()
+// }
+
+d3.json(GHIBLI_MOVIES_ALL_COLORS).then(data => {
+  allColorsData = data
+  console.log(allColorsData)
   const allColors = [];
   for (const i in allColorsData) {
     const movie = allColorsData[i];
     allColors.push(...movie.colors);
   }
   sortByHue = allColors.sort((a, b) => (a[0] - b[0]));
+  setTimeout(drawInitial(), 100)
+})
+
+function drawInitial(){
+  console.log('init')
+  let svg = d3.select("#data-visualization")
+                .append('svg')
+                .attr('width', 1000)
+                .attr('height', 950)
+                .attr('opacity', 1)
+
+  svg.attr('width', width + margin.left + margin.right);
+  svg.attr('height', height + margin.top + margin.bottom);
+
+  var container1 = svg.append('g')
+                    .attr('id','container1');
+  var container2 = svg.append('g')
+    .attr('id','container2');
+
+  container1.selectAll("rect").data(sortByHue).enter()
+    .append('rect')
+      .attr('class', 'rect')
+      .attr("x", (d, i) => i * (width / (sortByHue.length)))
+      .attr("y", 0)
+      .attr('width', width / (sortByHue.length))
+      .attr('height', 50)
+      .attr('fill', function(d) { return d3.hsl(d[0], d[1], d[2])})
+  
+  container2.selectAll("rect").data(sortByHue).enter()
+    .append('rect')
+      .attr('class', 'hue-rect')
+      .attr("x", (d, i) => i * (width / (sortByHue.length)))
+      .attr("y", 0)
+      .attr('width', width / (sortByHue.length))
+      .attr('height', 50)
+      .attr('fill', function(d) { return d3.hsl(d[0], 1, 0.5)})
+
+  svg.selectAll('.rect').transition().attr('opacity', 0)
+  svg.selectAll('.hue-rect').transition().attr('opacity', 0)
 }
 
 
+const showOriginal = () => {
+  let svg = d3.select('#data-visualization').select('svg')
+  svg.selectAll('.hue-rect').transition().attr('opacity', 0)
+  svg.selectAll('.rect').transition().attr('opacity', 1)
+}
+
+const showHue = () => {
+  let svg = d3.select('#data-visualization').select('svg')
+  svg.selectAll('.hue-rect').transition().attr('opacity', 1)
+  svg.selectAll('.rect').transition().attr('opacity', 0)
+}
+
+const hideAll = () => {
+  let svg = d3.select('#data-visualization').select('svg')
+  svg.selectAll('.hue-rect').transition().attr('opacity', 0)
+  svg.selectAll('.rect').transition().attr('opacity', 0)
+}
+
+let activationFunctions = [
+  showOriginal,
+  showHue,
+]
 
 
 
-function setup() {
-  createCanvas(canvas.width, canvas.height);
-  loadData();
-  let posterList = moviePosters[currentIndex];
-  posterList.forEach((poster, index) => {
-    // console.log(poster)
-    image(frame, posterPositions[index % 5].x - 30, posterPositions[index % 5].y - 270, posterImage.width * 1.5, posterImage.height + 300)
-    image(poster, posterPositions[index % 5].x, posterPositions[index % 5].y, posterImage.width, posterImage.height);
+// Handle Scroller
+let scroll = scroller()
+  .container(d3.select('#graphic'))
+scroll()
+
+let lastIndex, activeIndex = 0
+
+scroll.on('active', function(index){
+  d3.selectAll('.step')
+    .transition().duration(500)
+    .style('opacity', function (d, i) {return i === index ? 1 : 0.1;});
+
+  activeIndex = index
+  let sign = (activeIndex - lastIndex) < 0 ? -1 : 1; 
+  let scrolledSections = d3.range(lastIndex + sign, activeIndex + sign, sign);
+  scrolledSections.forEach(i => {
+    activationFunctions[i]();
   })
+  lastIndex = activeIndex;
+})
 
+// cleaning element when scroll away
+function clean(){
+  let svg = d3.select('#data-visualization').select('svg')
+  svg.select('.rect').transition().attr('opacity', 0)
 }
 
-// const sortByHue = ghibliData.sort((a, b) => (a[0] - b[0]));
-function draw() {
-  let pos = window.scrollY;
-  // clear()
-
-  if (pos > animationPositions.byHue) {
-    noStroke()
-    colorMode(HSB)
-    for (let i = 0; i < sortByHue.length; i++) {
-      setTimeout(() => {
-        let c = color(`hsl(${sortByHue[i][0].toFixed(0)}, ${sortByHue[i][1] * 100}%, ${sortByHue[i][2] * 100}%)`)
-        fill(c)
-        rect((window.innerWidth - sortByHue.length * 4) / 2 + i * 4, 450, 4, 85)
-      }, 1000)
-
-
-    }
-  }
-
-  // clear();
-
-
-  // image(moviePosters, 0, 0, canvas.width, canvas.height);
-}
-
-const getImages = (ghibliMovies) => {
-  let images = [];
-  let count = 0;
-  for (const item in ghibliMovies) {
-    if (count % 5 === 0) {
-      images.push([]);
-    }
-    images[Math.floor(count / 5)].push(ghibliMovies[item].poster_path);
-    count++;
-  }
-  return images;
-}
-
-function pressStringButton() {
-  currentIndex = (currentIndex + 1) % 3;
-  let posterList = moviePosters[currentIndex];
-  posterList.forEach((poster, index) => {
-    // console.log(poster)
-    image(frame, posterPositions[index % 5].x - 30, posterPositions[index % 5].y - 270, posterImage.width * 1.5, posterImage.height + 300)
-    image(poster, posterPositions[index % 5].x, posterPositions[index % 5].y, posterImage.width, posterImage.height);
-  })
-}
